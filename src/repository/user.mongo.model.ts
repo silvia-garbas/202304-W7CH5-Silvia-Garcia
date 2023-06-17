@@ -20,13 +20,13 @@ export const userSchema = new Schema<User>({
   friends: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Friend',
+      ref: 'Friend', // User
     },
   ],
   enemies: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Enemies',
+      ref: 'Enemy', // User
     },
   ],
 });

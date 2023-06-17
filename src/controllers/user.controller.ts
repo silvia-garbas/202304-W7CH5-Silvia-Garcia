@@ -7,7 +7,7 @@ import { LoginResponse } from '../types/response.api.js';
 import { Controller } from './controller.js';
 import { User } from '../entities/user.js';
 
-const debug = createDebug('W6:FilmController');
+const debug = createDebug('W7:UserController');
 export class UserController extends Controller<User> {
   // eslint-disable-next-line no-unused-vars
   constructor(protected repo: UserRepo) {

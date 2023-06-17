@@ -38,8 +38,8 @@ export class FriendRepo implements Repo<Friend> {
   }
 
   async create(data: Omit<Friend, 'id'>): Promise<Friend> {
-    const newBook = await FriendModel.create(data);
-    return newBook;
+    const newFriend = await FriendModel.create(data);
+    return newFriend;
   }
 
   async update(id: string, data: Partial<Friend>): Promise<Friend> {
