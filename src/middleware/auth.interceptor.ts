@@ -1,13 +1,13 @@
-import {NextFunction, Request, Response} from 'express'
+import { NextFunction, Request, Response } from 'express';
 import { HttpError } from '../types/http.error.js';
 import { AuthServices, PayloadToken } from '../services/auth.js';
 import createDebug from 'debug';
-import { FilmRepo } from '../repository/film.mongo.repository.js';
+import { UserRepo } from '../repository/user.mongo.repository.js';
 
-const debug = createDebug('W6:AuthInterceptor');
+const debug = createDebug('W7:AuthInterceptor');
 export class AuthInterceptor {
   // eslint-disable-next-line no-unused-vars
-  constructor(private filmRepo: FilmRepo) {
+  constructor(private userRepo: UserRepo) {
     debug('Instantiated');
   }
 
@@ -59,4 +59,3 @@ export class AuthInterceptor {
     }
   }
 }
-
