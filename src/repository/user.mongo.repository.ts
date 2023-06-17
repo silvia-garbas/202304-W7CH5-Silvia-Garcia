@@ -5,7 +5,7 @@ import { Repo } from './repo.js';
 import { HttpError } from '../types/http.error.js';
 
 // TEMP import { HttpError } from '../types/http.error.js';
-const debug = createDebug('W6:UserRepo');
+const debug = createDebug('W7:UserRepo');
 
 export class UserRepo implements Repo<User> {
   constructor() {

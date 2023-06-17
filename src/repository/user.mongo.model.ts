@@ -17,13 +17,19 @@ export const userSchema = new Schema<User>({
     required: true,
     unique: true,
   },
+  friends: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Friend',
+    },
+  ],
+  enemies: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Enemies',
+    },
+  ],
 });
-// Descomento
-//  , films: [{
-//     tyoe: Schema.Types.ObjectId,
-//     ref: 'Film'
-//   }]
-// });
 
 userSchema.set('toJSON', {
   transform(_document, returnedObject) {
