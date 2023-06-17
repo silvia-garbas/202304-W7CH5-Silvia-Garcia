@@ -24,7 +24,7 @@ app.use(express.json());
 //   debug('Soy un middleware');
 //   next();
   // TEMP next(new Error('Error'));
-//});
+// } );
 
 app.use(express.static('public'));
 
@@ -33,6 +33,6 @@ app.get('/', (req, res) => {
 });
 
 // App.use('/sample', sampleRouter);
-// app.use('/film', filmRouter);
+ app.use('/friend', friendRouter);
 app.use('/user', userRouter);
 app.use(errorHandler);
