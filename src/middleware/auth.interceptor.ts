@@ -2,12 +2,12 @@ import { NextFunction, Request, Response } from 'express';
 import { HttpError } from '../types/http.error.js';
 import { AuthServices, PayloadToken } from '../services/auth.js';
 import createDebug from 'debug';
-import { UserRepo } from '../repository/user.mongo.repository.js';
+// import { FilmRepo } from '../repository/user.mongo.repository.js'; repo friendes o enemies
 
 const debug = createDebug('W7:AuthInterceptor');
 export class AuthInterceptor {
   // eslint-disable-next-line no-unused-vars
-  constructor(private userRepo: UserRepo) {
+  constructor(private filmRepo: FilmRepo) {//filmRepo/FilmRepo
     debug('Instantiated');
   }
 
@@ -36,7 +36,7 @@ export class AuthInterceptor {
     }
   }
 
-  async authorizedForFilms(req: Request, res: Response, next: NextFunction) {
+  async authorizedForUsers(req: Request, res: Response, next: NextFunction) {
     try {
       if (!req.body.tokenPayload) {
         throw new HttpError(
@@ -47,9 +47,9 @@ export class AuthInterceptor {
       }
 
       const { id: userID } = req.body.tokenPayload as PayloadToken;
-      const { id: sauceId } = req.params;
-      const sauce = await this.filmRepo.queryById(sauceId);
-      if (sauce.owner.id !== userID) {
+      const { id: filmId } = req.params;//aquí iría friends o enemies
+      const film = await this.filmRepo.queryById(filmId);
+      if (film.owner.id !== userID) {
         throw new HttpError(401, 'Not authorized', 'Not authorized');
       }
 

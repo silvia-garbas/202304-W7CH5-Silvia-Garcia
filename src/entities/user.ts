@@ -5,8 +5,8 @@ export type User = {
   userName: string;
   email: string;
   passwd: string;
-  friends: User[];
-  enemies: User[]
+  friends: User[];// Mirar
+  enemies: User[]// Mirar
   // Films: Film[];
 };
 

@@ -2,7 +2,7 @@ import http from 'http';
 import { app } from './app.js';
 // Import * as dotenv from 'dotenv';
 import createDebug from 'debug';
-const debug = createDebug('W6');
+const debug = createDebug('W7');
 import { dbConnect } from './db/db.connect.js';
 
 // Dotenv.config();
