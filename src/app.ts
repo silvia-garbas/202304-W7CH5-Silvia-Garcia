@@ -6,7 +6,7 @@ import createDebug from 'debug';
 import { userRouter } from './routers/user.router.js';
 // Import { filmRouter } from './routers/film.router.js';
 import { errorHandler } from './middleware/error.js';
-const debug = createDebug('W6:App');
+const debug = createDebug('W7:App');
 
 export const app = express();
 
@@ -20,16 +20,16 @@ app.use(morgan('dev'));
 app.use(cors(corsOptions));
 app.use(express.json());
 
-app.use((_req, _res, next) => {
-  debug('Soy un middleware');
-  next();
+// App.use((_req, _res, next) => {
+//   debug('Soy un middleware');
+//   next();
   // TEMP next(new Error('Error'));
-});
+//});
 
-// app.use(express.static('public'));
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  res.send('Lo que he aprendido...');
+  res.send('Social network...');
 });
 
 // App.use('/sample', sampleRouter);

@@ -5,7 +5,7 @@ import { Repo } from '../repository/repo.js';
 import { User } from '../entities/user.js';
 
 import createDebug from 'debug';
-const debug = createDebug('W6:UserRouter');
+const debug = createDebug('W7:UserRouter');
 
 debug('Executed');
 
