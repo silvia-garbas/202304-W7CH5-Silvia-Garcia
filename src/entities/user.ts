@@ -1,10 +1,12 @@
-// import { Film } from './film';
+// Import { Film } from './film';
 
 export type User = {
   id: string;
   userName: string;
   email: string;
   passwd: string;
+  friends: User[];
+  enemies: User[]
   // Films: Film[];
 };
 
