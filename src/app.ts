@@ -24,7 +24,7 @@ app.use(express.json());
 //   debug('Soy un middleware');
 //   next();
   // TEMP next(new Error('Error'));
-//});
+// } );
 
 app.use(express.static('public'));
 
