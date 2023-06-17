@@ -24,4 +24,4 @@ enemySchema.set('toJSON', {
   },
 });
 
-export const EnemydModel = model('Enemy', enemySchema, 'enemies');
+export const EnemyModel = model('Enemy', enemySchema, 'enemies');

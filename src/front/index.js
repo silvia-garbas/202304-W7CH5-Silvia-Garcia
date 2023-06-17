@@ -1,4 +1,4 @@
-/* eslint-disable padding-line-between-statements */
+// /* eslint-disable padding-line-between-statements */
 // const url = 'http://localhost:4400';
 // const storeName = 'Sample';
 // function main() {
