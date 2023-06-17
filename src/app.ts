@@ -33,6 +33,6 @@ app.get('/', (req, res) => {
 });
 
 // App.use('/sample', sampleRouter);
-// app.use('/film', filmRouter);
+ app.use('/friend', friendRouter);
 app.use('/user', userRouter);
 app.use(errorHandler);
