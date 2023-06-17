@@ -4,7 +4,7 @@ import cors from 'cors';
 import createDebug from 'debug';
 // Import { sampleRouter } from './routers/sample.router.js';
 import { userRouter } from './routers/user.router.js';
-// Import { filmRouter } from './routers/film.router.js';
+import { friendRouter } from './routers/friend.router.js';
 import { errorHandler } from './middleware/error.js';
 const debug = createDebug('W7:App');
 
