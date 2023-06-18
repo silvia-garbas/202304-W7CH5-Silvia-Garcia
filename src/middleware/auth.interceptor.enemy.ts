@@ -2,8 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { HttpError } from '../types/http.error.js';
 import { AuthServices, PayloadToken } from '../services/auth.js';
 import createDebug from 'debug';
-import { EnemyRepo } from '../repository/enemy.mongo.repository.js';  // Booleano
-
+import { EnemyRepo } from '../repository/enemy.mongo.repository.js'; // Booleano
 
 const debug = createDebug('W7:AuthInterceptorEnemy');
 export class AuthInterceptorEnemy {

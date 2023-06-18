@@ -5,10 +5,10 @@ import createDebug from 'debug';
 import { FriendRepo } from '../repository/friend.mongo.repository.js'; // Booleano
 
 
-const debug = createDebug('W7:AuthInterceptor');
+const debug = createDebug('W7:AuthInterceptorFriend');
 export class AuthInterceptor {
   // eslint-disable-next-line no-unused-vars
-  constructor(private filmRepo: FriendRepo) {// FilmRepo/FilmRepo
+  constructor(private friendRepo: FriendRepo) {// FilmRepo/FilmRepo
     debug('Instantiated');
   }
 
@@ -49,7 +49,7 @@ export class AuthInterceptor {
 
       const { id: userID } = req.body.tokenPayload as PayloadToken;
       const { id: friendId } = req.params;// Aquí iría friends o enemies
-      const friend = await this.filmRepo.queryById(friendId);
+      const friend = await this.friendRepo.queryById(friendId);
       if (friend.friendUser.id!== userID) {
         throw new HttpError(401, 'Not authorized', 'Not authorized');
       }
