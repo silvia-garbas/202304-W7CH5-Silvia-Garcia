@@ -2,13 +2,14 @@ import { NextFunction, Request, Response } from 'express';
 import { HttpError } from '../types/http.error.js';
 import { AuthServices, PayloadToken } from '../services/auth.js';
 import createDebug from 'debug';
-import { FriendRepo } from '../repository/friend.mongo.repository.js'; // Booleano
+import { EnemyRepo } from '../repository/enemy.mongo.repository.js';  // Booleano
 
 
-const debug = createDebug('W7:AuthInterceptor');
-export class AuthInterceptor {
+const debug = createDebug('W7:AuthInterceptorEnemy');
+export class AuthInterceptorEnemy {
   // eslint-disable-next-line no-unused-vars
-  constructor(private filmRepo: FriendRepo) {// FilmRepo/FilmRepo
+  constructor(private enemyRepo: EnemyRepo) {
+    // FilmRepo/FilmRepo
     debug('Instantiated');
   }
 
@@ -37,7 +38,7 @@ export class AuthInterceptor {
     }
   }
 
-  async authorizedForFriends(req: Request, res: Response, next: NextFunction) {
+  async authorizedForEnemies(req: Request, res: Response, next: NextFunction) {
     try {
       if (!req.body.tokenPayload) {
         throw new HttpError(
@@ -48,9 +49,9 @@ export class AuthInterceptor {
       }
 
       const { id: userID } = req.body.tokenPayload as PayloadToken;
-      const { id: friendId } = req.params;// Aquí iría friends o enemies
-      const friend = await this.filmRepo.queryById(friendId);
-      if (friend.friendUser.id!== userID) {
+      const { id: enemyId } = req.params; // Aquí iría friends o enemies
+      const enemy = await this.enemyRepo.queryById(enemyId);
+      if (enemy.enemyUser.id !== userID) {
         throw new HttpError(401, 'Not authorized', 'Not authorized');
       }
 

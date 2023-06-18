@@ -6,6 +6,7 @@ import createDebug from 'debug';
 import { userRouter } from './routers/user.router.js';
 import { friendRouter } from './routers/friend.router.js';
 import { errorHandler } from './middleware/error.js';
+import { enemyRouter } from './routers/enemy.router.js';
 const debug = createDebug('W7:App');
 
 export const app = express();
@@ -23,7 +24,7 @@ app.use(express.json());
 // App.use((_req, _res, next) => {
 //   debug('Soy un middleware');
 //   next();
-  // TEMP next(new Error('Error'));
+// TEMP next(new Error('Error'));
 // } );
 
 app.use(express.static('public'));
@@ -33,6 +34,8 @@ app.get('/', (req, res) => {
 });
 
 // App.use('/sample', sampleRouter);
- app.use('/friend', friendRouter);
+
 app.use('/user', userRouter);
+app.use('/friend', friendRouter);
+app.subscribe('/enemy', enemyRouter);
 app.use(errorHandler);
