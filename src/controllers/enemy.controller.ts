@@ -19,7 +19,7 @@ export class EnemyController extends Controller<Enemy> {
       const { id: userId } = req.body.tokenPayload as PayloadToken;
       const user = await this.userRepo.queryById(userId);
       delete req.body.tokenPayload;
-      req.body.friendUser = userId;
+      req.body.enemyUser = userId;
       const newEnemy = await this.repo.create(req.body);
       user.enemies.push(newEnemy);
       this.userRepo.update(user.id, user);
