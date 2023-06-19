@@ -1,18 +1,21 @@
-// Import { Film } from './film';
-import { Friend } from "./friend";
-import { Enemy } from "./enemy";
 
-export type User = {
+ export type User = {// Está mal.
   id: string;
   userName: string;
   email: string;
   passwd: string;
-  friends: Friend[];// Mirar
-  enemies: Enemy[]// Mirar
-  // Films: Film[];
+  friends: User[];
+  enemies: User[]
+
 };
 
 export type UserLogin = {
   user: String; // UserName/email
   passwd: string;
 };
+// P  export type Avatar = {
+//   urlOriginal: string;
+//   url: string;
+//   mimetype: string;
+//   size: number;
+// };

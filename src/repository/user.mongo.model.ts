@@ -1,6 +1,7 @@
 import { Schema, model } from 'mongoose';
 import { User } from '../entities/user.js';
 
+
 export const userSchema = new Schema<User>({
   userName: {
     type: String,
@@ -20,15 +21,24 @@ export const userSchema = new Schema<User>({
   friends: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Friend', // User
+      ref: 'User',
     },
   ],
   enemies: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Enemy', // User
+      ref: 'User',
     },
   ],
+  // P avatar: {
+  //   type: {
+  //     urlOriginal: { type: String },
+  //     url: { type: String },
+  //     mimetype: { type: String },
+  //     size: { type: Number },
+  //   },
+  //   required: true
+  // }
 });
 
 userSchema.set('toJSON', {
