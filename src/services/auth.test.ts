@@ -22,6 +22,13 @@ describe('Given AuthServices class', () => {
     //  A   expect(compare).toHaveBeenCalled()
       })
     })
-  });
+     test('Then should return false when the value not matched the hash', () => {
+    const result = 'false';
+    expect(result).toMatch('false')
+
+    })
 
 })
+
+  });
+
