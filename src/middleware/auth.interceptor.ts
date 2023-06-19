@@ -1,16 +1,12 @@
+/* eslint-disable no-useless-constructor */
 import { NextFunction, Request, Response } from 'express';
 import { HttpError } from '../types/http.error.js';
-import { AuthServices, PayloadToken } from '../services/auth.js';
-import createDebug from 'debug';
-import { FriendRepo } from '../repository/friend.mongo.repository.js'; // Booleano
+import { UserRepo } from '../repository/user.mongo.repository.js';
+import { AuthServices } from '../services/auth.js';
 
-
-const debug = createDebug('W7:AuthInterceptorFriend');
 export class AuthInterceptor {
   // eslint-disable-next-line no-unused-vars
-  constructor(private friendRepo: FriendRepo) {// FilmRepo/FilmRepo
-    debug('Instantiated');
-  }
+  constructor(protected repo: UserRepo) {}
 
   logged(req: Request, res: Response, next: NextFunction) {
     try {
@@ -37,7 +33,7 @@ export class AuthInterceptor {
     }
   }
 
-  async authorizedForFriends(req: Request, res: Response, next: NextFunction) {
+  async authorized(req: Request, res: Response, next: NextFunction) {
     try {
       if (!req.body.tokenPayload) {
         throw new HttpError(
@@ -47,11 +43,8 @@ export class AuthInterceptor {
         );
       }
 
-      const { id: userID } = req.body.tokenPayload as PayloadToken;
-      const { id: friendId } = req.params;// Aquí iría friends o enemies
-      const friend = await this.friendRepo.queryById(friendId);
-      if (friend.friendUser.id!== userID) {
-        throw new HttpError(401, 'Not authorized', 'Not authorized');
+      if (req.body.tokenPayload.id !== req.params.id) {
+        throw new HttpError(498, 'Token not found', 'Invalid Token');
       }
 
       next();
