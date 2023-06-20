@@ -27,7 +27,7 @@ app.use(express.json());
 // TEMP next(new Error('Error'));
 // } );
 
-app.use(express.static('public'));
+// MARTES app.use(express.static('public')); mirar esto que lo he quitado martes20&
 
 app.get('/', (req, res) => {
   res.send('Social network...');
