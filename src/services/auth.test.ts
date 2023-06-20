@@ -12,23 +12,16 @@ describe('Given AuthServices class', () => {
       expect(jwt.sign).toHaveBeenCalled();
     });
 
-    describe('When I use compare method',
-     () =>{
-
-      test('Then should return true when the value matched the hash',() =>{
-
-     const result = 'true'
-      expect(result).toMatch('true');
-    //  A   expect(compare).toHaveBeenCalled()
-      })
-    })
-     test('Then should return false when the value not matched the hash', () => {
-    const result = 'false';
-    expect(result).toMatch('false')
-
-    })
-
-})
-
+    describe('When I use compare method', () => {
+      test('Then should return true when the value matched the hash', () => {
+        const result = 'true';
+        expect(result).toMatch('true');
+        //  A   expect(compare).toHaveBeenCalled()
+      });
+    });
+    test('Then should return false when the value not matched the hash', () => {
+      const result = 'false';
+      expect(result).toMatch('false');
+    });
   });
-
+});

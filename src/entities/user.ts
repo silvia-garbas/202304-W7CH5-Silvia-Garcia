@@ -1,21 +1,36 @@
+import joi from 'joi';
 
- export type User = {// Está mal.
+export type Avatar = {
+  urlOriginal: string;
+  url: string;
+  mimetype: string;
+  size: number;
+};
+
+export type User = {
   id: string;
   userName: string;
   email: string;
   passwd: string;
-  friends: User[];
-  enemies: User[]
-
+  avatar: Avatar;
+  friends: User[];// QUitar
+  enemies: User[];// QUItar
 };
 
 export type UserLogin = {
-  user: String; // UserName/email
+  user: string; // Equal to userName or email
   passwd: string;
 };
-// P  export type Avatar = {
-//   urlOriginal: string;
-//   url: string;
-//   mimetype: string;
-//   size: number;
-// };
+
+export const userSchema = joi.object<User>({
+  userName: joi.string().required(),
+  email: joi.string().email().required().messages({
+    'string.base': `"email" debe ser tipo 'texto'`,
+    'string.email': `El "email"  no es válido`,
+    'string.empty': `El "email" no puede faltar`,
+  }),
+  passwd: joi
+    .string()
+    .pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)
+    .required(),
+});

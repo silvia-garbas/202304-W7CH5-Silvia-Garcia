@@ -1,6 +1,8 @@
+
+
 import { Schema, model } from 'mongoose';
 import { User } from '../entities/user.js';
-
+// A import joi from 'joi'
 
 export const userSchema = new Schema<User>({
   userName: {
@@ -18,6 +20,16 @@ export const userSchema = new Schema<User>({
     required: true,
     unique: true,
   },
+  avatar: {
+    type: {
+      urlOriginal: { type: String },
+      url: { type: String },
+      mimetype: { type: String },
+      size: { type: Number },
+    },
+    required: true,
+    unique: true,
+  },
   friends: [
     {
       type: Schema.Types.ObjectId,
@@ -30,16 +42,17 @@ export const userSchema = new Schema<User>({
       ref: 'User',
     },
   ],
-  // P avatar: {
-  //   type: {
-  //     urlOriginal: { type: String },
-  //     url: { type: String },
-  //     mimetype: { type: String },
-  //     size: { type: Number },
-  //   },
-  //   required: true
-  // }
+
 });
+
+// P export const userShema = joi.object<User>({
+//   userName: joi.string().required(),
+//   email: joi.string().email().required(), falta message
+//   passwd: joi.
+//   string().
+//   pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/).required()  Express validation,
+// })
+
 
 userSchema.set('toJSON', {
   transform(_document, returnedObject) {
